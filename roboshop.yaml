@@ -10,7 +10,7 @@
    - name: creat instanaces
      amazon.aws.ec2.instanaces:
      name: "roboshp-{ item }"
-     image_id: { "ami id"}
+     image_id: { "amii d" }
      instanaces__typr: t3-micro
      security group: 
      - sg-0efe1702f65afd9ee
