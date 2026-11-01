@@ -16,7 +16,6 @@
     loop: "{{ thorams }}"
     when: action == "create"
         
-  tasks:
   - name: create instances
     amazon.aws.ec2_instance:
       name: "roboshop1-{{ item }}"
