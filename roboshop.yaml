@@ -1,0 +1,20 @@
+- name: create Ec2 instanaces
+  hosts: local
+  connection: local
+  vars:
+  instances: [ "mongodb", "rabbitmq", "reddis", "mqsql" ]
+  action: create
+  domain id: thorams.store
+  ami id: ami-0055977a6e828a4f4
+  tasks:
+   - name: creat instanaces
+     amazon.aws.ec2.instanaces:
+     name: "roboshp-{item}"
+     image_id: { "ami id"}
+     instanaces__typr: t3-micro
+     security group: 
+     - sg-0efe1702f65afd9ee
+     - "roboshop { item }"
+     region: us-east-1
+     loop: {{ instanaces }}
+     when: action == "create"
