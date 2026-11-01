@@ -27,3 +27,8 @@
       region: us-east-1
     loop: "{{ thorams }}"
     when: action == "create"
+    register: ec2_output
+
+  - name: save ec2 ec2_output
+    debug:
+      msg: "{{ ec2_output }}"
