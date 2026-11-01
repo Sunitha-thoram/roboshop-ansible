@@ -12,9 +12,9 @@
       name: "roboshp-{{ item }}"
       image_id: "{{ ami_id }}"
       instanace_type: t3-micro
-    security group: 
-    - sg-0efe1702f65afd9ee
-    - "roboshop-{{ item }}"
-    region: us-east-1
+      security group: 
+      - sg-0efe1702f65afd9ee
+      - "roboshop-{{ item }}"
+      region: us-east-1
     loop: "{{ instanaces }}"
     when: action == "create"
