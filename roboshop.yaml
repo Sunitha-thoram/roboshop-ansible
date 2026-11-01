@@ -5,16 +5,16 @@
   instances: [ "mongodb", "rabbitmq", "reddis", "mqsql" ]
   action: create
   domain id: thorams.store
-  ami id: ami-0055977a6e828a4f4
+  ami_id: ami-0055977a6e828a4f4
   tasks:
    - name: create instanaces
      amazon.aws.ec2.instanaces:
-     name: "roboshp-{ item }"
-     image_id: { "amii d" }
-     instanaces__typr: t3-micro
+       name: "roboshp-{{ item }}"
+       image_id: "{{ ami_id }}"
+       instanace_type: t3-micro
      security group: 
      - sg-0efe1702f65afd9ee
-     - "roboshop { item }"
+     - "roboshop-{{ item }}"
      region: us-east-1
-     loop: { instanaces }
+     loop: "{{ instanaces }}"
      when: action == "create"
