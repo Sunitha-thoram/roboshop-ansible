@@ -10,9 +10,9 @@
   - name: create security_groups
     amazon.aws.ec2_security_group:
       name: "roboshop1-{{ item }}"
-      description: "roboshop1-{{ item }}-SG"
-      region: us-east-1
       state: present
+      description: "SG for {{ item }}"
+      region: us-east-1
     loop: "{{ thorams }}"
     when: action == "create"
         
