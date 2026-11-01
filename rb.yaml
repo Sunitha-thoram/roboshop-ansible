@@ -1,0 +1,31 @@
+- name: create Ec2 instances
+  hosts: local
+  connection: local
+  vars:
+    thorams: [ "mongodb", "rabbitmq", "redis", "mysql" ]
+    action: create
+    domain_id: thorams.store
+    ami_id: ami-0055977a6e828a4f4
+
+  tasks:
+  - name: create SGs
+    amazon.aws.ec2_security_group:
+      name: "sriram-{{ item }}"
+      state: present
+      description: "sriram-{{ item }}-SG"
+      region: us-east-1
+    loop: "{{ instancetypes }}"
+    when: action == "create"
+ 
+  - name: create ec2 instances
+    amazon.aws.ec2_instance:
+      name: "sriram-{{ item }}"
+      image_id: "{{ ami_id }}"
+      instance_type: t3.micro
+      security_groups:
+      - sg-0692481335becb5ca
+      - "sriram-{{ item }}"
+      region: us-east-1
+    loop: "{{ instancetypes }}"
+    when: action == "create"
+ 
