@@ -9,7 +9,7 @@
   tasks:
    - name: creat instanaces
      amazon.aws.ec2.instanaces:
-     name: "roboshp-{item}"
+     name: "roboshp-{ item }"
      image_id: { "ami id"}
      instanaces__typr: t3-micro
      security group: 
