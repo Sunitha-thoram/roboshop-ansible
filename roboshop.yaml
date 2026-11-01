@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    thorams: [ "mongodb", "rabbitmq", "redis" ]
+    instances: [ "mongodb", "rabbitmq", "redis" ]
     action: create
     domain_id: thorams.store
     ami_id: ami-0055977a6e828a4f4
@@ -13,7 +13,7 @@
       state: present
       description: "SG for {{ item }}"
       region: us-east-1
-    loop: "{{ thorams }}"
+    loop: "{{ instances }}"
     when: action == "create"
         
   - name: create instances
@@ -25,7 +25,7 @@
       - sg-0efe1702f65afd9ee
       - "roboshop1-{{ item }}"
       region: us-east-1
-    loop: "{{ thorams }}"
+    loop: "{{ instances }}"
     when: action == "create"
     register: ec2_output
 
