@@ -23,7 +23,7 @@
       image_id: "{{ ami_id }}"
       instance_type: t3.micro
       security_groups:
-      - sg-0692481335becb5ca
+      - sg-0efe1702f65afd9ee
       - "sriram-{{ item }}"
       region: us-east-1
     loop: "{{ instancetypes }}"
