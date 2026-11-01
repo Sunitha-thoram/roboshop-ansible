@@ -16,5 +16,5 @@
      - sg-0efe1702f65afd9ee
      - "roboshop { item }"
      region: us-east-1
-     loop: {{ instanaces }}
+     loop: { instanaces }
      when: action == "create"
